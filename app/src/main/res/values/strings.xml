@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Corona Cases</string>
+    <string name="india">India</string>
+    <string name="world">World</string>
+
+    <string name="new_cases">New cases in past 24 hours</string>
+    <string name="data_source">Data Source:</string>
+    <string name="ds_links">World/India/State: www.mohfw.in &amp; District: www.covid19india.org/</string>
+    <string name="red_zone">Red Zone</string>
+    <string name="non_hotspot">Non-Hotspot</string>
+    <string name="green_zone">Green Zone</string>
+    <string name="state_district">State/Districts</string>
+    <string name="confirmed_text">Confirmed</string>
+    <string name="recovered_text">Recovered</string>
+    <string name="deaths_text">Deaths</string>
+
+
+</resources>
