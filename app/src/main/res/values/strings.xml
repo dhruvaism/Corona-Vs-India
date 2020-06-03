@@ -1,11 +1,13 @@
 <resources>
-    <string name="app_name">Corona Cases</string>
+    <string name="app_name">Covid19 Tracker</string>
+    <string name="world_name">Covid19 Vs World</string>
+    <string name="app_desc">This app is developed to make it easy to track covid-19 cases all over the world. it gives you live updated data about new cases as well as total cases for each place.  in addition it gives you a smooth map visualization that how each place is afftected by corona virus.</string>
     <string name="india">India</string>
     <string name="world">World</string>
 
     <string name="new_cases">New cases in past 24 hours</string>
     <string name="data_source">Data Source:</string>
-    <string name="ds_links">World/India/State: www.mohfw.in &amp; District: www.covid19india.org/</string>
+    <string name="ds_links">www.covid19india.org/</string>
     <string name="red_zone">Red Zone</string>
     <string name="non_hotspot">Non-Hotspot</string>
     <string name="green_zone">Green Zone</string>
@@ -13,6 +15,46 @@
     <string name="confirmed_text">Confirmed</string>
     <string name="recovered_text">Recovered</string>
     <string name="deaths_text">Deaths</string>
+    <string name="active_text">Active</string>
 
+    <string name="maharashtra">Maharashtra</string>
+    <string name="tamil_nadu">Tamil Nadu</string>
+    <string name="gujrat">Gujarat</string>
+    <string name="delhi">Delhi</string>
+    <string name="rajasthan">Rajasthan</string>
+    <string name="madhya_pradesh">Madhya Pradesh</string>
+    <string name="up">Uttar Pradesh</string>
+    <string name="wb">West Bengal</string>
+    <string name="ap">Andhra Pradesh</string>
+    <string name="bihar">Bihar</string>
+    <string name="karnataka">Karnataka</string>
+    <string name="punjab">Punjab</string>
+    <string name="telangana">Telangana</string>
+    <string name="j_k">Jammu and Kashmir</string>
+    <string name="odisha">Odisha</string>
+    <string name="haryana">Haryana</string>
+    <string name="kerala">Kerala</string>
+    <string name="assam">Assam</string>
+    <string name="jharkhand">Jharkhand</string>
+    <string name="uttarakhand">Uttarakhand</string>
+    <string name="chhattisgarh">Chhattisgarh</string>
+    <string name="chandigarh">Chandigarh</string>
+    <string name="himachal_pradesh">Himachal Pradesh</string>
+    <string name="tripura">Tripura</string>
+    <string name="goa">Goa</string>
+    <string name="ladakh">Ladakh</string>
+    <string name="puducherry">Puducherry</string>
+    <string name="manipur">Manipur</string>
+    <string name="a_and_n">Andaman and Nicobar Islands</string>
+    <string name="meghalaya">Meghalaya</string>
+    <string name="nagaland">Nagaland</string>
+    <string name="daman_and_diu">Dadra and Nagar Haveli and Daman and Diu</string>
+    <string name="aru_p">Arunachal Pradesh</string>
+    <string name="mizoram">Mizoram</string>
+    <string name="sikkim">Sikkim</string>
+    <string name="lakshadweep">Lakshadweep</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

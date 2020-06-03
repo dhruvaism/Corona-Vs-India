@@ -1,28 +1,57 @@
 package com.sarkar.dhruv.coronacases;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.res.ColorStateList;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
+import com.richpath.RichPath;
+import com.richpath.RichPathView;
+import com.richpathanimator.RichPathAnimator;
 import com.sarkar.dhruv.coronacases.adapters.StateAdapter;
+import com.sarkar.dhruv.coronacases.fragments.About;
+import com.sarkar.dhruv.coronacases.fragments.India;
+import com.sarkar.dhruv.coronacases.fragments.World;
 import com.sarkar.dhruv.coronacases.handlers.HttpRequest;
+import com.sarkar.dhruv.coronacases.models.CountryModel;
 import com.sarkar.dhruv.coronacases.models.StateModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.Format;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import static com.sarkar.dhruv.coronacases.constants.Constant.Active;
 import static com.sarkar.dhruv.coronacases.constants.Constant.Confirmed;
@@ -39,105 +68,111 @@ import static com.sarkar.dhruv.coronacases.constants.Constant.Statenotes;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView stateRecyclerView;
-    ArrayList<StateModel> stateList;
+
+    public static Activity activity;
+    India indiaFragment;
+    World worldFragment;
+    About aboutFragment;
+    BottomNavigationView bottomNavigationView;
+    public static TextView title;
+    public static ArrayList<StateModel> stateList;
+    public static ArrayList<CountryModel> countryModels;
+
+    public static CoordinatorLayout titleLayout;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-        setAllCases();
-        new HttpHandler().execute();
-    }
+        activity = this;
+        indiaFragment = new India();
+        worldFragment = new World();
+        aboutFragment = new About();
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void setAllCases() {
-        MaterialCardView confirmed,recovered,deaths;
-        confirmed = findViewById(R.id.confirmed_case);
-        recovered = findViewById(R.id.recovered_case);
-        deaths = findViewById(R.id.deaths_case);
+        //setting initial fragment to be home fragment
+        switchFragment(indiaFragment, India.id);
 
-        TextView c_no_case,c_no_new_case,c_type_case;
-        TextView r_no_case,r_no_new_case,r_type_case;
-        TextView d_no_case,d_no_new_case,d_type_case;
-        c_no_case = confirmed.findViewById(R.id.no_case);
-        c_no_new_case = confirmed.findViewById(R.id.no_new_case);
-        c_type_case = confirmed.findViewById(R.id.case_type);
+        //Initializing Bottom navigation
+        bottomNavigationView = findViewById(R.id.bottom_nav_bar);
 
-        r_no_case = recovered.findViewById(R.id.no_case);
-        r_no_new_case = recovered.findViewById(R.id.no_new_case);
-        r_type_case = recovered.findViewById(R.id.case_type);
+        //Event listener for bottom navigation view
+        bottomNavigationViewListener(bottomNavigationView);
 
-        d_no_case = deaths.findViewById(R.id.no_case);
-        d_no_new_case = deaths.findViewById(R.id.no_new_case);
-        d_type_case = deaths.findViewById(R.id.case_type);
-
-        r_no_case.setTextColor(getColor(R.color.recovered));
-        r_type_case.setText(getString(R.string.recovered_text));
-
-        d_no_case.setTextColor(getColor(R.color.deaths));
-        d_type_case.setText(getString(R.string.deaths_text));
+        activity = this;
+        title = findViewById(R.id.title);
+        titleLayout = findViewById(R.id.title_layout);
 
     }
 
-    private void setStateRecyclerView() {
-        stateRecyclerView = findViewById(R.id.states_wise_recycler_view);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
-        StateAdapter stateAdapter = new StateAdapter(this,stateList);
-        stateRecyclerView.hasFixedSize();
-        stateRecyclerView.setLayoutManager(linearLayoutManager);
-        stateRecyclerView.setAdapter(stateAdapter);
 
-    }
-
-    private class HttpHandler extends AsyncTask<Void,Void,Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            Toast.makeText(MainActivity.this, "Http request started", Toast.LENGTH_SHORT).show();
+    public static String formatter(String str) {
+        boolean first = true;
+        String ans = "";
+        int count = 0;
+        for (int i = str.length() - 1; i >= 0; i--) {
+            if (first && count == 3) {
+                String newstring = str.charAt(i) + "," + ans;
+                ans = newstring;
+                count = 0;
+                first = false;
+            } else if (!first && count == 2) {
+                String newstring = str.charAt(i) + "," + ans;
+                ans = newstring;
+                count = 0;
+            }else {
+                String newstring = str.charAt(i)+ans;
+                ans = newstring;
+            }
+            count++;
         }
+        return ans;
+    }
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            HttpRequest httpRequest = HttpRequest.getInstance();
-            JSONObject jsonObject = httpRequest.getStateWise();
-            try {
-                if(jsonObject!=null) {
-                    setStateList(jsonObject);
+    private void switchFragment(Fragment fragment, String id) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.host_fragment, fragment);
+        fragmentTransaction.commit();
+
+    }
+
+
+    //Bottom navigation view listener
+    private void bottomNavigationViewListener(BottomNavigationView bottomNavigationView) {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                switch (menuItem.getItemId()){
+                    case R.id.bottom_nav_bar_india:
+                        switchFragment(indiaFragment, India.id);
+                        break;
+                    case R.id.bottom_nav_bar_world:
+                        switchFragment(worldFragment, World.id);
+                        break;
+                    case R.id.bottom_nav_bar_about:
+                        switchFragment(aboutFragment, About.id);
+                        break;
+                    default:
+                        return false;
                 }
-            } catch (JSONException e) {
-                e.printStackTrace();
+                return true;
             }
-            return null;
-        }
+        });
+    }
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            if(stateList!=null) {
-                setStateRecyclerView();
-            }
+    @Override
+    public void onBackPressed() {
+
+        int selectedItemId = bottomNavigationView.getSelectedItemId();
+        if(selectedItemId != R.id.bottom_nav_bar_india){
+            bottomNavigationView.setSelectedItemId(R.id.bottom_nav_bar_india);
+            switchFragment(indiaFragment,India.id);
+        }else{
+            super.onBackPressed();
         }
     }
 
-    private void setStateList(JSONObject jsonObject) throws JSONException {
-        stateList = new ArrayList<>();
-        JSONArray jsonArray = jsonObject.getJSONArray(STATEWISE);
-        for(int i=0;i<jsonArray.length();i++) {
-            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-            stateList.add(new StateModel(jsonObject1.getString(Active),
-                    jsonObject1.getString(Confirmed),
-                    jsonObject1.getString(Deaths),
-                    jsonObject1.getString(Deltaconfirmed),
-                    jsonObject1.getString(Deltadeaths),
-                    jsonObject1.getString(Deltarecovered),
-                    jsonObject1.getString(Lastupdatedtime),
-                    jsonObject1.getString(Recovered),
-                    jsonObject1.getString(State),
-                    jsonObject1.getString(Statecode),
-                    jsonObject1.getString(Statenotes)
-                    ));
-        }
-    }
+
 }

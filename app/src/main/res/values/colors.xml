@@ -4,11 +4,33 @@
     <color name="colorPrimaryDark">#f76363</color>
     <color name="colorAccent">#eb3f3f</color>
     <color name="confirmed">#f7bb39</color>
+    <color name="active">#0b51a1</color>
     <color name="recovered">#087815</color>
-    <color name="deaths">#8f0606</color>
+    <color name="deaths">#b80606</color>
     <color name="text_color">#3b3939</color>
     <color name="header_text_color">#000000</color>
     <color name="alternate_color">#f7eded</color>
+    <color name="confirmed_back">#faf9e6</color>
+    <color name="active_back">#e6e6fa</color>
+    <color name="recovered_back">#e8fae6</color>
+    <color name="deaths_back">#fae6e6</color>
+    <color name="white">#ffffff</color>
+    <color name="background">#dddddd</color>
+    <color name="map_default_color">#f2f2f2</color>
+    <color name="status_bar_color">#99ffffff</color>
+
+    <color name="fifty_k">#f22c2c</color>
+    <color name="forty_k">#f25252</color>
+    <color name="thirty_k">#f26363</color>
+    <color name="tweenty_k">#f27777</color>
+    <color name="ten_k">#f27979</color>
+    <color name="less_ten_k">#f79797</color>
+    <color name="less_five_k">#f7adad</color>
+    <color name="less_two_k_fifty">#f7c1c1</color>
+    <color name="less_one_k">#facdcd</color>
+    <color name="less_five_hundred">#fce3e3</color>
+    <color name="less_hundred">#ffeded</color>
+    <color name="selected_state">#750707</color>
 
 
 </resources>

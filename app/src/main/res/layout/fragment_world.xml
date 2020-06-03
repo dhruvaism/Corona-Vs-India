@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    android:id="@+id/custom_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/content_layout">
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:textColor="#7d7979"
+                android:ellipsize="marquee"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:layout_gravity="center_vertical"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal">
+
+
+                <include
+                    android:id="@+id/confirmed_case"
+                    layout="@layout/all_cases_layout"/>
+                <include
+                    android:id="@+id/recovered_case"
+                    layout="@layout/all_cases_layout"/>
+
+                <include
+                    android:id="@+id/deaths_case"
+                    layout="@layout/all_cases_layout"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="World Map"
+                    android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-light"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Click country for more details"
+                    android:textSize="11dp"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.richpath.RichPathView
+                android:id="@+id/world_map"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:layout_weight="1"
+                app:vector="@drawable/ic_world" />
+
+            <include layout="@layout/color_stick_layout_world"/>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:padding="5dp"
+                android:background="@color/alternate_color"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_arrow_drop_up_black_24dp"
+                        android:tint="@color/deaths"/>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:tint="@color/recovered"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/new_cases"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="11dp"
+                        android:textColor="@color/text_color"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/data_source"
+                        android:textStyle="bold"
+                        android:textSize="11dp"
+                        android:textColor="@color/header_text_color"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="https://api.covid19api.com/"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="11dp"
+                        android:textColor="@color/text_color"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/alternate_color"
+                android:padding="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/state_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/state_district"
+                    android:textColor="@color/header_text_color"
+                    android:textStyle="bold"
+                    android:textSize="8dp"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"/>
+                <TextView
+                    android:id="@+id/conf_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirmed_text"
+                    android:textColor="@color/header_text_color"
+                    android:textStyle="bold"
+                    android:textSize="8dp"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="2dp"
+                    android:textAlignment="textEnd"
+                    android:textAllCaps="true"/>
+
+                <TextView
+                    android:id="@+id/recov_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recovered_text"
+                    android:textColor="@color/header_text_color"
+                    android:textStyle="bold"
+                    android:textSize="8dp"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="2dp"
+                    android:textAlignment="textEnd"
+                    android:textAllCaps="true"/>
+                <TextView
+                    android:id="@+id/deaths_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/deaths_text"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:textColor="@color/header_text_color"
+                    android:textStyle="bold"
+                    android:textSize="8dp"
+                    android:layout_marginLeft="2dp"
+                    android:textAlignment="textEnd"
+                    android:layout_weight="1"
+                    android:textAllCaps="true"/>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/country_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:visibility="gone"
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            shimmer:duration="800"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:shimmer="http://schemas.android.com/apk/res-auto">
+
+            <!-- Adding 7 rows of placeholders -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <include layout="@layout/data_placeholder_layout_3" />
+                <include layout="@layout/data_placeholder_layout" />
+                <include layout="@layout/data_placeholder_layout" />
+                <include layout="@layout/data_placeholder_layout" />
+                <include layout="@layout/data_placeholder_layout" />
+                <include layout="@layout/data_placeholder_layout" />
+
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.core.widget.NestedScrollView>

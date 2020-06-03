@@ -2,319 +2,67 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        app:elevation="0dp">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/title_layout"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:theme="@style/AppTheme">
-
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            android:background="@color/white">
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/view_background"/>
                 <TextView
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/app_name"
-                    android:textColor="#d1cdcd"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="25dp"
+                    android:textColor="#7d7979"
                     android:textStyle="bold"
                     android:layout_gravity="center_vertical"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    android:fontFamily="sans-serif-thin"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="#d1cdcd"
-                    android:textStyle="normal"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginTop="4dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    android:fontFamily="sans-serif-thin"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
-        </androidx.appcompat.widget.Toolbar>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
+
+        <FrameLayout
+            android:id="@+id/host_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            />
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="vertical">
-       <androidx.appcompat.widget.LinearLayoutCompat
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:padding="5dp"
-           android:layout_marginTop="10dp"
-           android:orientation="horizontal">
-           <com.google.android.material.button.MaterialButton
-               android:id="@+id/india_btn"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="@string/india"
-               android:elevation="10dp"
-               android:layout_weight="1"
-               android:textAlignment="center"
-               android:padding="8dp"
-               app:cornerRadius="20dp"
-               android:backgroundTint="@color/colorAccent"
-               android:textColor="@android:color/white"
-               android:layout_margin="5dp"
-               android:textStyle="bold"
-               android:textAppearance="@style/TextAppearance.AppCompat"/>
-
-           <com.google.android.material.button.MaterialButton
-               android:id="@+id/world_btn"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="@string/world"
-               android:textAlignment="center"
-               android:elevation="10dp"
-               android:layout_weight="1"
-               android:padding="8dp"
-               app:cornerRadius="20dp"
-               android:layout_margin="5dp"
-               android:backgroundTint="@android:color/white"
-               android:textColor="@color/text_color"
-               android:textStyle="bold"
-               android:textAppearance="@style/TextAppearance.AppCompat"/>
-
-
-       </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
-       <androidx.appcompat.widget.LinearLayoutCompat
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
-           android:padding="5dp"
-           android:orientation="horizontal">
-
-           <include
-               android:id="@+id/confirmed_case"
-               layout="@layout/all_cases_layout"/>
-           <include
-               android:id="@+id/recovered_case"
-               layout="@layout/all_cases_layout"/>
-           <include
-               android:id="@+id/deaths_case"
-               layout="@layout/all_cases_layout"/>
-
-       </androidx.appcompat.widget.LinearLayoutCompat>
-
-       <androidx.appcompat.widget.LinearLayoutCompat
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_margin="10dp"
-           android:padding="5dp"
-           android:background="@color/alternate_color"
-           android:gravity="center_horizontal"
-           android:orientation="vertical">
-
-           <androidx.appcompat.widget.LinearLayoutCompat
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:gravity="center_vertical"
-               android:orientation="horizontal">
-
-               <androidx.appcompat.widget.AppCompatImageView
-                   android:layout_width="25dp"
-                   android:layout_height="25dp"
-                   android:src="@drawable/ic_arrow_drop_up_black_24dp"
-                   android:tint="@color/deaths"/>
-               <androidx.appcompat.widget.AppCompatImageView
-                   android:layout_width="25dp"
-                   android:layout_height="25dp"
-                   android:src="@drawable/ic_arrow_drop_down_black_24dp"
-                   android:tint="@color/recovered"/>
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="@string/new_cases"
-                   android:layout_marginLeft="10dp"
-                   android:textSize="11dp"
-                   android:textColor="@color/text_color"/>
-
-           </androidx.appcompat.widget.LinearLayoutCompat>
-           <androidx.appcompat.widget.LinearLayoutCompat
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="30dp"
-               android:layout_marginRight="30dp"
-               android:orientation="horizontal"
-               >
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="@string/data_source"
-                   android:textStyle="bold"
-                   android:textSize="11dp"
-                   android:textColor="@color/header_text_color"/>
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="@string/ds_links"
-                   android:layout_marginLeft="5dp"
-                   android:textSize="11dp"
-                   android:textColor="@color/text_color"/>
-           </androidx.appcompat.widget.LinearLayoutCompat>
-
-       </androidx.appcompat.widget.LinearLayoutCompat>
-
-       <androidx.appcompat.widget.LinearLayoutCompat
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal">
-
-           <androidx.appcompat.widget.LinearLayoutCompat
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:gravity="center_vertical|right"
-               android:layout_weight="1">
-               <androidx.appcompat.widget.AppCompatImageView
-                   android:layout_width="10dp"
-                   android:layout_height="10dp"
-                   android:src="@drawable/ic_circle_black_24dp"
-                   android:tint="@color/deaths"/>
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginLeft="5dp"
-                   android:textColor="@color/text_color"
-                   android:textSize="12dp"
-                   android:text="@string/red_zone"/>
-           </androidx.appcompat.widget.LinearLayoutCompat>
-           <androidx.appcompat.widget.LinearLayoutCompat
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:gravity="center_vertical|center_horizontal"
-               android:layout_weight="1">
-               <androidx.appcompat.widget.AppCompatImageView
-                   android:layout_width="10dp"
-                   android:layout_height="10dp"
-                   android:src="@drawable/ic_circle_black_24dp"
-                   android:tint="@color/confirmed"/>
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginLeft="5dp"
-                   android:textColor="@color/text_color"
-                   android:textSize="12dp"
-                   android:text="@string/non_hotspot"/>
-           </androidx.appcompat.widget.LinearLayoutCompat>
-           <androidx.appcompat.widget.LinearLayoutCompat
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:gravity="center_vertical|left"
-               android:layout_weight="1">
-               <androidx.appcompat.widget.AppCompatImageView
-                   android:layout_width="10dp"
-                   android:layout_height="10dp"
-                   android:src="@drawable/ic_circle_black_24dp"
-                   android:tint="@color/recovered"/>
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginLeft="5dp"
-                   android:textColor="@color/text_color"
-                   android:textSize="12dp"
-                   android:text="@string/green_zone"/>
-           </androidx.appcompat.widget.LinearLayoutCompat>
-
-       </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-       <androidx.appcompat.widget.LinearLayoutCompat
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:background="@color/alternate_color"
-           android:padding="10dp"
-           android:layout_marginTop="20dp"
-           android:orientation="horizontal">
-
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/state_district"
-               android:textColor="@color/header_text_color"
-               android:textStyle="bold"
-               android:textSize="10dp"
-               android:layout_marginLeft="10dp"
-               android:layout_marginRight="10dp"
-               android:textAllCaps="true"/>
-           <androidx.appcompat.widget.LinearLayoutCompat
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginLeft="40dp"
-               android:orientation="horizontal">
-               <androidx.appcompat.widget.LinearLayoutCompat
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:gravity="right"
-                   android:layout_weight="1">
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="@string/confirmed_text"
-                       android:textColor="@color/header_text_color"
-                       android:textStyle="bold"
-                       android:textSize="10dp"
-                       android:textAllCaps="true"/>
-               </androidx.appcompat.widget.LinearLayoutCompat>
-
-               <androidx.appcompat.widget.LinearLayoutCompat
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:gravity="right"
-                   android:layout_weight="1">
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="@string/recovered_text"
-                       android:textColor="@color/header_text_color"
-                       android:textStyle="bold"
-                       android:textSize="10dp"
-                       android:textAllCaps="true"/>
-               </androidx.appcompat.widget.LinearLayoutCompat>
-               <androidx.appcompat.widget.LinearLayoutCompat
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:gravity="right"
-                   android:layout_weight="1">
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="@string/deaths_text"
-                       android:textColor="@color/header_text_color"
-                       android:textStyle="bold"
-                       android:layout_marginRight="10dp"
-
-                       android:textSize="10dp"
-                       android:textAllCaps="true"/>
-               </androidx.appcompat.widget.LinearLayoutCompat>
-           </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-       </androidx.appcompat.widget.LinearLayoutCompat>
-       <androidx.recyclerview.widget.RecyclerView
-           android:id="@+id/states_wise_recycler_view"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"/>
-
-   </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-    </androidx.core.widget.NestedScrollView>
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginBottom="-5dp"
+        android:foregroundGravity="fill"
+        app:itemIconSize="30dp"
+        app:itemBackground="@color/alternate_color"
+        android:background="@color/alternate_color"
+        app:itemIconTint="@drawable/bottom_nav_bar_selector"
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/disrict_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical|left"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/zone_icon"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:tint="@color/deaths"
+            android:src="@drawable/ic_circle_black_24dp"/>
+        <TextView
+            android:id="@+id/district_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="district"
+            android:textColor="@color/text_color"
+            android:textSize="12dp"
+            android:layout_marginLeft="2dp"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+        <TextView
+            android:id="@+id/confirmed_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="47,190"
+            android:textAlignment="textEnd"
+            android:layout_weight="1"
+            android:textColor="@color/text_color"
+            android:textSize="12dp"/>
+
+        <TextView
+            android:id="@+id/active_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="47,190"
+            android:textAlignment="textEnd"
+            android:layout_weight="1"
+            android:textColor="@color/text_color"
+            android:textSize="12dp"/>
+
+        <TextView
+            android:id="@+id/recovered_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="13,190"
+            android:textAlignment="textEnd"
+            android:layout_weight="1"
+            android:textColor="@color/text_color"
+            android:textSize="12dp"/>
+
+        <TextView
+            android:id="@+id/deaths_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1,190"
+            android:textAlignment="textEnd"
+            android:layout_weight="1"
+            android:textColor="@color/text_color"
+            android:textSize="12dp"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

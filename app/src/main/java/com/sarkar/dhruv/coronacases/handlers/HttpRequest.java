@@ -14,8 +14,11 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+import static com.sarkar.dhruv.coronacases.constants.Constant.COUNTRY_WISE;
+import static com.sarkar.dhruv.coronacases.constants.Constant.DISTRICTWISE_DATA;
 import static com.sarkar.dhruv.coronacases.constants.Constant.STATEWISE;
 import static com.sarkar.dhruv.coronacases.constants.Constant.STATEWISE_DATA;
+import static com.sarkar.dhruv.coronacases.constants.Constant.ZONES_DATA;
 
 public class HttpRequest {
 
@@ -34,8 +37,8 @@ public class HttpRequest {
     private String execute(String urlStr){
 
         final String REQUEST_METHOD = "GET";
-        final int READ_TIMEOUT = 30000;
-        final int CONNECTION_TIMEOUT = 30000;
+        final int READ_TIMEOUT = 15000;
+        final int CONNECTION_TIMEOUT = 15000;
 
         String result = "";
         String inputLine;
@@ -125,7 +128,23 @@ public class HttpRequest {
         return convertToJSONObject(result);
     }
 
+    public JSONObject getDistrictWise() {
+        String result = execute(DISTRICTWISE_DATA);
+        System.out.println(result);
+        return convertToJSONObject(result);
+    }
 
+    public JSONObject getZones() {
+        String result = execute(ZONES_DATA);
+        System.out.println(result);
+        return convertToJSONObject(result);
+    }
+
+    public JSONObject getCountryWise() {
+        String result = execute(COUNTRY_WISE);
+        System.out.println(result);
+        return convertToJSONObject(result);
+    }
 
 
 

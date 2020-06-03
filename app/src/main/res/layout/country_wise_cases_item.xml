@@ -19,20 +19,8 @@
             android:gravity="left"
             android:layout_weight="1"
             android:orientation="horizontal">
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/right_"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:padding="2dp"
-                android:src="@drawable/ic_drop_right_24dp"/>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/down_"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:visibility="gone"
-                android:src="@drawable/ic_arrow_drop_down_black_24dp"/>
             <TextView
-                android:id="@+id/state_name"
+                android:id="@+id/country_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="state"
@@ -70,23 +58,6 @@
                     android:textColor="@color/deaths"
                     android:textSize="9dp"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/ac_ll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right"
-
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/active_no"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="47,190"
-                android:textColor="@color/text_color"
-                android:textSize="12dp"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
         <androidx.appcompat.widget.LinearLayoutCompat
